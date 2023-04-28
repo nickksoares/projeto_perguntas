@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_perguntas/main.dart';
 
 class Questao extends StatelessWidget {
   final String texto;
@@ -18,20 +19,5 @@ class Questao extends StatelessWidget {
   }
 }
 
-class PerguntasClass {
-  final List<Map<String, Object>> perguntasList = [
-    {
-      'texto': 'Qual a sua cor favorita?',
-      'respostas': ['Preto', 'Vermelho', 'Verde', 'Branco'],
-    },
-    {
-      'texto': 'Qual e seu animal favorito?',
-      'respostas': ['Coelho', 'Cobra', 'Elefante', 'Leao'],
-    },
-    {
-      'texto': 'Qual seu instrutor favorito?',
-      'respostas': ['Maria', 'Joao', 'Leo', 'Pedro'],
-    }
-  ];
-  
-}
+
+

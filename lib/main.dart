@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import './questao.dart';
-import 'respostas.dart';
+import 'package:projeto_perguntas/resultado.dart';
+import 'questionario.dart';
+import 'questao.dart';
 
 main(){
   runApp( const PerguntaApp());
@@ -10,25 +11,42 @@ class _PerguntaAppState extends State<PerguntaApp>{
   var _perguntaSelecionada = 0;
   
   void _responder(){
-    setState(() {
-      _perguntaSelecionada ++;
-    });
+    
+    if(temPerguntaSelecionada){
+      setState(() {
+        _perguntaSelecionada ++;
+     });
+
+    }
     
   }
-  get perguntaPos => _perguntaSelecionada;
+  
+  bool get temPerguntaSelecionada {
+    return _perguntaSelecionada < _perguntas.length;
+  }
+
+
+  final _perguntas = const [
+    {
+      'texto': 'Qual é a sua cor favorita?',
+      'respostas': ['Preto', 'Vermelho', 'Verde', 'Branco'],
+    },
+    {
+      'texto': 'Qual é o seu animal favorito?',
+      'respostas': ['Coelho', 'Cobra', 'Elefante', 'Leão'],
+    },
+    {
+      'texto': 'Qual é o seu instrutor favorito?',
+      'respostas': ['Maria', 'João', 'Leo', 'Pedro'],
+    },
+  ];
+
+  
 
   @override
   Widget build(BuildContext context){
     
-    List<Widget> respostasWidgetList = [];
-    for (
-      var textoResp 
-      in 
-      PerguntasClass().perguntasList[_perguntaSelecionada].cast()['respostas']
-      )
-      {
-        respostasWidgetList.add(Resposta(textoResp, _responder));
-      }
+
 
     return MaterialApp(
       home: Scaffold(
@@ -36,22 +54,23 @@ class _PerguntaAppState extends State<PerguntaApp>{
         appBar: AppBar(
           title: const Text('Perguntas'),
           ),
-        body: Column(
-          children: <Widget>[
-            //Perguntas a serem feitas
-            Questao(PerguntasClass().perguntasList[_perguntaSelecionada]['texto'].toString()),
-            
-            //Lista de Respostas a serem respondidas
-            //Utilizando o operador '...' a lista de Widget e posta
-            ...respostasWidgetList
-          ],
-        ),
+        body: temPerguntaSelecionada?
+        Questionario(
+          perguntas: _perguntas,
+          perguntaSelecionada: _perguntaSelecionada,
+          responder: _responder,
+        ): const Resultado()
+        
       ),
     );
   }
 
 
 
+}
+
+get perguntaPos {
+  return _PerguntaAppState()._perguntaSelecionada;
 }
 
 
@@ -64,9 +83,5 @@ class PerguntaApp extends StatefulWidget{
   _PerguntaAppState createState(){
     return _PerguntaAppState();
   }
-  
-  
-  
-  
-
 }
+
