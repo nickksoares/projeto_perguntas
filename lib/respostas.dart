@@ -4,6 +4,8 @@ class Resposta extends StatelessWidget {
   const Resposta(this.texto,this.quandoSelecionado,{super.key});
   final String texto;
   final void Function() quandoSelecionado;
+
+
   @override
   Widget build(BuildContext context) {
     return

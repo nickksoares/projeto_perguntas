@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_perguntas/main.dart';
 
 class Questao extends StatelessWidget {
   final String texto;
