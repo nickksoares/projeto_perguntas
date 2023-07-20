@@ -13,11 +13,10 @@ class _PerguntaAppState extends State<PerguntaApp> {
   void _responder(int pontuacao) {
     if (temPerguntaSelecionada) {
       setState(() {
-        _perguntaSelecionada+=10;
+        _perguntaSelecionada++;
         _pontuacaoTotal += pontuacao;
       });
     }
-    //print(_perguntas[_perguntaSelecionada]);
 
   }
 
