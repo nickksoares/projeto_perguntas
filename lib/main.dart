@@ -17,9 +17,8 @@ class _PerguntaAppState extends State<PerguntaApp> {
         _pontuacaoTotal += pontuacao;
       });
     }
+    //print(_perguntas[_perguntaSelecionada]);
 
-    // ignore: avoid_print
-    print(_pontuacaoTotal);
   }
 
   void _reiniciarQuestionario (){
